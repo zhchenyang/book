@@ -163,7 +163,7 @@
 
 \title{数据操纵手册}
 \author{张晨阳}
-\date{2018-06-26}
+\date{2018-06-27}
 
 \let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
 \begin{document}
@@ -195,6 +195,11 @@
 由于 \textbf{bookdown}\index{bookdown} \citep{R-bookdown} 包给 R
 语言用户提供了一种便捷的写作方式，这让我有了尝试的动力。
 
+总的来说这本的书是关于如何操作数据的。由于
+\textbf{kintr}\index{kintr}\citep{xie2015}
+强大的多语言支持，可以让我不局限于 R 语言，同样深受欢迎的 Python 和
+SQL。
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{sessionInfo}\NormalTok{()}
@@ -217,23 +222,28 @@
 ## [1] stats     graphics  grDevices utils     datasets 
 ## [6] methods   base     
 ## 
+## other attached packages:
+## [1] reticulate_1.7
+## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.17    bookdown_0.7    digest_0.6.15  
-##  [4] rprojroot_1.3-2 backports_1.1.2 magrittr_1.5   
-##  [7] evaluate_0.10.1 highr_0.6       stringi_1.2.2  
-## [10] rstudioapi_0.7  rmarkdown_1.9   tools_3.5.0    
-## [13] stringr_1.3.1   xfun_0.1        yaml_2.1.19    
-## [16] compiler_3.5.0  htmltools_0.3.6 knitr_1.20
+##  [1] Rcpp_0.12.17    bookdown_0.7    lattice_0.20-35
+##  [4] digest_0.6.15   rprojroot_1.3-2 grid_3.5.0     
+##  [7] DBI_1.0.0       jsonlite_1.5    backports_1.1.2
+## [10] magrittr_1.5    evaluate_0.10.1 highr_0.6      
+## [13] stringi_1.2.2   rstudioapi_0.7  Matrix_1.2-14  
+## [16] rmarkdown_1.9   RMySQL_0.10.15  tools_3.5.0    
+## [19] stringr_1.3.1   xfun_0.1        yaml_2.1.19    
+## [22] compiler_3.5.0  htmltools_0.3.6 knitr_1.20
 \end{verbatim}
 
 \section*{致谢}
 
 
-非常感谢谁谁以及谁谁对我的帮助。艾玛，要不是他们神一样的队友，我两年前就写完这本书了。
+感谢我的父母吧！
 
 \BeginKnitrBlock{flushright}
-张三\\
-于 A 村某角落
+张晨阳\\
+上海
 \EndKnitrBlock{flushright}
 
 \hypertarget{author}{%
@@ -249,6 +259,77 @@
 
 现在我们可以试试 \textbf{bookdown} 的一些初级功能了，例如图表。图
 \ref{fig:hello} 是一幅无趣的散点图，表 \ref{tab:iris} 是一份枯燥的数据。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(mtcars, }\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                    mpg cyl disp  hp drat    wt  qsec
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02
+##                   vs am gear carb
+## Mazda RX4          0  1    4    4
+## Mazda RX4 Wag      0  1    4    4
+## Datsun 710         1  1    4    1
+## Hornet 4 Drive     1  0    3    1
+## Hornet Sportabout  0  0    3    2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas}
+\BuiltInTok{print}\NormalTok{(r.mtcars.head())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                     mpg  cyl   disp     hp  drat     wt   qsec   vs   am  \
+## Mazda RX4          21.0  6.0  160.0  110.0  3.90  2.620  16.46  0.0  1.0   
+## Mazda RX4 Wag      21.0  6.0  160.0  110.0  3.90  2.875  17.02  0.0  1.0   
+## Datsun 710         22.8  4.0  108.0   93.0  3.85  2.320  18.61  1.0  1.0   
+## Hornet 4 Drive     21.4  6.0  258.0  110.0  3.08  3.215  19.44  1.0  0.0   
+## Hornet Sportabout  18.7  8.0  360.0  175.0  3.15  3.440  17.02  0.0  0.0   
+## 
+##                    gear  carb  
+## Mazda RX4           4.0   4.0  
+## Mazda RX4 Wag       4.0   4.0  
+## Datsun 710          4.0   1.0  
+## Hornet 4 Drive      3.0   1.0  
+## Hornet Sportabout   3.0   2.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{ * }\KeywordTok{from}\NormalTok{ mtcars }\KeywordTok{limit} \DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:mysql}5 records}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r|r|r|r|r|r|r}
+\hline
+rownames & mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb\\
+\hline
+Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90 & 2.620 & 16.46 & 0 & 1 & 4 & 4\\
+\hline
+Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90 & 2.875 & 17.02 & 0 & 1 & 4 & 4\\
+\hline
+Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85 & 2.320 & 18.61 & 1 & 1 & 4 & 1\\
+\hline
+Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08 & 3.215 & 19.44 & 1 & 0 & 3 & 1\\
+\hline
+Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15 & 3.440 & 17.02 & 0 & 0 & 3 & 2\\
+\hline
+\end{tabular}
+\end{table}
 
 \begin{Shaded}
 \begin{Highlighting}[]

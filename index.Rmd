@@ -33,6 +33,8 @@ lapply(c("tidyverse"), function(pkg) {
 
 由于 **bookdown**\index{bookdown} [@R-bookdown] 包给 R 语言用户提供了一种便捷的写作方式，这让我有了尝试的动力。
 
+总的来说这本的书是关于如何操作数据的。由于 **kintr**\index{kintr}[@xie2015] 强大的多语言支持，可以让我不局限于 R 语言，同样深受欢迎的 Python 和 SQL。
+
 
 ```{r}
 sessionInfo()
@@ -40,10 +42,10 @@ sessionInfo()
 
 ## 致谢 {-}
 
-非常感谢谁谁以及谁谁对我的帮助。艾玛，要不是他们神一样的队友，我两年前就写完这本书了。
+感谢我的父母吧！
 
 ```{block2, type='flushright', html.tag='p'}
-张三  
-于 A 村某角落
+张晨阳  
+上海
 ```
 

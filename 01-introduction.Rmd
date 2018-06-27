@@ -4,6 +4,33 @@
 
 现在我们可以试试 **bookdown** 的一些初级功能了，例如图表。图 \@ref(fig:hello) 是一幅无趣的散点图，表 \@ref(tab:iris) 是一份枯燥的数据。
 
+```{r include=FALSE}
+library(reticulate)
+use_python("/Users/cvrve/Applications/anaconda2/bin/python")
+con <- DBI::dbConnect(RMySQL::MySQL(), 
+  host = "localhost",
+  user = "root",
+  dbname="mtcar",
+  password = "123456"
+)
+```
+
+```{r r}
+head(mtcars, 5)
+```
+
+
+```{python py}
+import pandas
+print(r.mtcars.head())
+```
+
+
+```{sql mysql, connection=con}
+select * from mtcars limit 5
+```
+
+
 ```{r hello, fig.cap='雷猴啊，散点图！', out.width='90%'}
 par(mar = c(4, 4, 1, .1))
 plot(cars, pch = 19)

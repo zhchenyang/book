@@ -25,7 +25,7 @@
 <meta name="author" content="张晨阳">
 
 
-<meta name="date" content="2018-06-26">
+<meta name="date" content="2018-06-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -165,21 +165,143 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">第 1 章</span> 牛刀小试</h1>
-<p>现在我们可以试试 <strong>bookdown</strong> 的一些初级功能了，例如图表。图 <a href="intro.html#fig:hello">1.1</a> 是一幅无趣的散点图，表 <a href="intro.html#tab:iris">1.1</a> 是一份枯燥的数据。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="fl">.1</span>))</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">plot</span>(cars, <span class="dt">pch =</span> <span class="dv">19</span>)</a></code></pre></div>
+<p>现在我们可以试试 <strong>bookdown</strong> 的一些初级功能了，例如图表。图 <a href="intro.html#fig:hello">1.1</a> 是一幅无趣的散点图，表 <a href="intro.html#tab:iris">1.2</a> 是一份枯燥的数据。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">head</span>(mtcars, <span class="dv">5</span>)</a></code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02
+##                   vs am gear carb
+## Mazda RX4          0  1    4    4
+## Mazda RX4 Wag      0  1    4    4
+## Datsun 710         1  1    4    1
+## Hornet 4 Drive     1  0    3    1
+## Hornet Sportabout  0  0    3    2</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="im">import</span> pandas</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="bu">print</span>(r.mtcars.head())</a></code></pre></div>
+<pre><code>##                     mpg  cyl   disp     hp  drat     wt   qsec   vs   am  \
+## Mazda RX4          21.0  6.0  160.0  110.0  3.90  2.620  16.46  0.0  1.0   
+## Mazda RX4 Wag      21.0  6.0  160.0  110.0  3.90  2.875  17.02  0.0  1.0   
+## Datsun 710         22.8  4.0  108.0   93.0  3.85  2.320  18.61  1.0  1.0   
+## Hornet 4 Drive     21.4  6.0  258.0  110.0  3.08  3.215  19.44  1.0  0.0   
+## Hornet Sportabout  18.7  8.0  360.0  175.0  3.15  3.440  17.02  0.0  0.0   
+## 
+##                    gear  carb  
+## Mazda RX4           4.0   4.0  
+## Mazda RX4 Wag       4.0   4.0  
+## Datsun 710          4.0   1.0  
+## Hornet 4 Drive      3.0   1.0  
+## Hornet Sportabout   3.0   2.0</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">select</span> * <span class="kw">from</span> mtcars <span class="kw">limit</span> <span class="dv">5</span></a></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:mysql">表 1.1: </span>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">rownames</th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+<th align="right">drat</th>
+<th align="right">wt</th>
+<th align="right">qsec</th>
+<th align="right">vs</th>
+<th align="right">am</th>
+<th align="right">gear</th>
+<th align="right">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mazda RX4</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.620</td>
+<td align="right">16.46</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Mazda RX4 Wag</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.875</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">Datsun 710</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">108</td>
+<td align="right">93</td>
+<td align="right">3.85</td>
+<td align="right">2.320</td>
+<td align="right">18.61</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Hornet 4 Drive</td>
+<td align="right">21.4</td>
+<td align="right">6</td>
+<td align="right">258</td>
+<td align="right">110</td>
+<td align="right">3.08</td>
+<td align="right">3.215</td>
+<td align="right">19.44</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Hornet Sportabout</td>
+<td align="right">18.7</td>
+<td align="right">8</td>
+<td align="right">360</td>
+<td align="right">175</td>
+<td align="right">3.15</td>
+<td align="right">3.440</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="fl">.1</span>))</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">plot</span>(cars, <span class="dt">pch =</span> <span class="dv">19</span>)</a></code></pre></div>
 <div class="figure"><span id="fig:hello"></span>
 <img src="bookdown_files/figure-html/hello-1.png" alt="雷猴啊，散点图！" width="90%" />
 <p class="caption">
 图 1.1: 雷猴啊，散点图！
 </p>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&#39;雷猴啊，iris 数据！&#39;</span>,</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">  <span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&#39;雷猴啊，iris 数据！&#39;</span>,</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">)</a></code></pre></div>
 <table>
-<caption><span id="tab:iris">表 1.1: </span>雷猴啊，iris 数据！</caption>
+<caption><span id="tab:iris">表 1.2: </span>雷猴啊，iris 数据！</caption>
 <thead>
 <tr class="header">
 <th align="right">Sepal.Length</th>
