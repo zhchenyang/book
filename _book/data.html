@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="author.html">
+<link rel="prev" href="intro.html">
+<link rel="next" href="sound.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -163,67 +163,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">数据操纵手册</h1>
-<h4 class="author"><em>张晨阳</em></h4>
-<h4 class="date"><em>2018-06-29</em></h4>
+<div id="data" class="section level1">
+<h1><span class="header-section-number">第 2 章</span> 数据</h1>
+<p>理解数据类型对操纵数据是十分重要的。同样数据结构也是十分重要的。</p>
+<div id="section-2.1" class="section level2">
+<h2><span class="header-section-number">2.1</span> 数据类型</h2>
+<p>R 和 Python 中的数据类型是大致相同的，主要有：</p>
+<ul>
+<li>整型：Python中可以处理任意大小的整数。</li>
+<li>浮点型：浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，浮点数除了数学写法（如<code>123.456</code>）之外还支持科学计数法（如<code>1.23456e2</code>）。</li>
+<li>字符串型：字符串是以单引号或双引号括起来的任意文本，比如<code>'hello'</code>和<code>&quot;hello&quot;</code>,字符串还有原始字符串表示法、字节字符串表示法、Unicode字符串表示法，而且可以书写成多行的形式（用三个单引号或三个双引号开头，三个单引号或三个双引号结尾）。</li>
+<li>布尔型：布尔值只有<code>True</code>、<code>False</code>两种值，要么是<code>True</code>，要么是<code>False</code>，在Python中，可以直接用<code>True</code>、<code>False</code>表示布尔值（请注意大小写），也可以通过布尔运算计算出来（例如<code>3 &lt; 5</code>会产生布尔值<code>True</code>，而<code>2 == 1</code>会产生布尔值<code>False</code>）。</li>
+<li>复数型：形如<code>3+5j</code>，跟数学上的复数表示一样，唯一不同的是虚部的i换成了j。</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw">as.logical</span>(a)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">as.integer</span>(a)</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">as.double</span>(a)</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">as.character</span>(a)</a></code></pre></div>
+<pre><code>## [1] &quot;TRUE&quot;</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb18-1" data-line-number="1">a <span class="op">=</span> <span class="va">True</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="bu">print</span>(<span class="bu">type</span>(a))</a></code></pre></div>
+<pre><code>## &lt;type &#39;bool&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="bu">print</span>(<span class="bu">int</span>(a))</a></code></pre></div>
+<pre><code>## 1</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="bu">print</span>(<span class="bu">float</span>(a))</a></code></pre></div>
+<pre><code>## 1.0</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="bu">print</span>(<span class="bu">str</span>(a))</a></code></pre></div>
+<pre><code>## True</code></pre>
 </div>
-<div id="e5898de8a880" class="section level1 unnumbered">
-<h1>前言</h1>
-<p>一些对过去工作经验零散凌乱的总结让我有了将其汇总成书的念头。又介于自己并非是什么成功人士、学霸大佬或者文笔绚烂的文人，所以迟迟未“动笔”，总觉得这并非是我该做的事情。</p>
-<p>由于 <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a>)</span> 包给 R 语言用户提供了一种便捷的写作方式，这让我有了尝试的动力。</p>
-<p>总的来说这本的书是关于如何操作数据的。由于 <strong>kintr</strong><span class="citation">(Xie <a href="#ref-xie2015">2015</a>)</span> 强大的多语言支持，可以让我不局限于 R 语言，同样深受欢迎的 Python 和 SQL。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
-<pre><code>## R version 3.5.0 (2018-04-23)
-## Platform: x86_64-apple-darwin15.6.0 (64-bit)
-## Running under: macOS High Sierra 10.13
-## 
-## Matrix products: default
-## BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
-## LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
-## 
-## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-## 
-## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets 
-## [6] methods   base     
-## 
-## loaded via a namespace (and not attached):
-##  [1] compiler_3.5.0  backports_1.1.2 bookdown_0.7   
-##  [4] magrittr_1.5    rprojroot_1.3-2 tools_3.5.0    
-##  [7] htmltools_0.3.6 rstudioapi_0.7  yaml_2.1.19    
-## [10] Rcpp_0.12.17    stringi_1.2.2   rmarkdown_1.9  
-## [13] knitr_1.20      xfun_0.1        stringr_1.3.1  
-## [16] digest_0.6.15   evaluate_0.10.1</code></pre>
-<div id="e887b4e8b0a2" class="section level2 unnumbered">
-<h2>致谢</h2>
-<p>感谢我的父母吧！</p>
+<div id="section-2.2" class="section level2">
+<h2><span class="header-section-number">2.2</span> 数据结构</h2>
+<p>貌似大家都喜欢用白萍风这个意境。又如彭玉麟的对联：</p>
+<blockquote>
+<p>凭栏看云影波光，最好是红蓼花疏、白苹秋老；<br />
+把酒对琼楼玉宇，莫孤负天心月到、水面风来。</p>
+</blockquote>
+<p>嘿，玛尼玛尼哄。</p>
 
-<p class="flushright">
-张晨阳<br />
-上海
-</p>
-
 
 </div>
 </div>
-<h3>参考文献</h3>
-<div id="refs" class="references">
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2018. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
-</div>
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
-</div>
-</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="author.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sound.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -253,7 +247,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yihui/bookdown-chinese/edit/master/index.Rmd",
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/02-foo.Rmd",
 "text": "编辑"
 },
 "download": ["bookdown.pdf", "bookdown.epub"],

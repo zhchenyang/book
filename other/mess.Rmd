@@ -1,0 +1,73 @@
+---
+title: "零散记录"
+author: "curve"
+date: "6/29/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+use_python("/Users/cvrve/Applications/anaconda2/bin/python")
+```
+
+## 符号运算差异
+
+在求幂、余、整除上不同，其他一致。
+
+```{python}
+print(2**3)
+print(22%8)
+print(22//8)
+```
+
+
+```{r}
+2^3;2**3
+22%%8
+22%/%8
+```
+
+## 数据类型
+
+数据类型基本一致
+
+逻辑值 < 整型 < 浮点型 < 字符串
+
+```{python}
+print(1 == True)
+print(1 == 1.0)
+print(1 == "1")
+```
+
+```{r}
+print(1 == TRUE)
+print(1 == 1.0)
+print(1 == "1")
+```
+
+字符串拼接的时候 python 支持 `+` 而 R 不支持。重复字符串时 python 支持 `* int`，同样 R 也不支持。
+
+```{r}
+# error
+"a" + "b"
+'a' * 5
+```
+
+```{r}
+data <- mtcars
+```
+
+
+
+```{python}
+import pandas
+
+print(r.data.head())
+```
+
+## 控制流
+
+逻辑判读上，大体上是一致的。不同是或且非，R 使用的是符号，python 用的是 `and`, `or`, `not`。
+
+

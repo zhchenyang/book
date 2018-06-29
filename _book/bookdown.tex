@@ -163,7 +163,7 @@
 
 \title{数据操纵手册}
 \author{张晨阳}
-\date{2018-06-27}
+\date{2018-06-29}
 
 \let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
 \begin{document}
@@ -371,21 +371,113 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 
 就这样，你可以一直编下去，直到编不下去。
 
-\hypertarget{wind}{%
-\chapter{白苹风末}\label{wind}}
+\hypertarget{data}{%
+\chapter{数据}\label{data}}
 
-瞎扯几句。
+理解数据类型对操纵数据是十分重要的。同样数据结构也是十分重要的。
 
-\section{张老爷子}
+\section{数据类型}
 
-话说张老爷子写了一首诗：
+R 和 Python 中的数据类型是大致相同的，主要有：
 
-\begin{quote}
-姑苏开遍碧桃时，邂逅河阳女画师。\\
-红豆江南留梦影，白苹风末唱秋词。
-\end{quote}
+\begin{itemize}
+\tightlist
+\item
+  整型：Python中可以处理任意大小的整数。
+\item
+  浮点型：浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，浮点数除了数学写法（如\texttt{123.456}）之外还支持科学计数法（如\texttt{1.23456e2}）。
+\item
+  字符串型：字符串是以单引号或双引号括起来的任意文本，比如\texttt{\textquotesingle{}hello\textquotesingle{}}和\texttt{"hello"},字符串还有原始字符串表示法、字节字符串表示法、Unicode字符串表示法，而且可以书写成多行的形式（用三个单引号或三个双引号开头，三个单引号或三个双引号结尾）。
+\item
+  布尔型：布尔值只有\texttt{True}、\texttt{False}两种值，要么是\texttt{True}，要么是\texttt{False}，在Python中，可以直接用\texttt{True}、\texttt{False}表示布尔值（请注意大小写），也可以通过布尔运算计算出来（例如\texttt{3\ \textless{}\ 5}会产生布尔值\texttt{True}，而\texttt{2\ ==\ 1}会产生布尔值\texttt{False}）。
+\item
+  复数型：形如\texttt{3+5j}，跟数学上的复数表示一样，唯一不同的是虚部的i换成了j。
+\end{itemize}
 
-\section{彭大将领}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\OtherTok{TRUE}
+
+\KeywordTok{as.logical}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.integer}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.double}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.character}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "TRUE"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OperatorTok{=} \VariableTok{True}
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{type}\NormalTok{(a))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## <type 'bool'>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{int}\NormalTok{(a))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{float}\NormalTok{(a))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 1.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\BuiltInTok{str}\NormalTok{(a))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## True
+\end{verbatim}
+
+\section{数据结构}
 
 貌似大家都喜欢用白萍风这个意境。又如彭玉麟的对联：
 
